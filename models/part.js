@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const PartSchema = new Schema({
-    number: {type: String, required: true},
-    name: {type: String, required: true},
-    unitOfMeasure: {type: String, default: 'each', required: true},
+    number: {type: String, trim: true, required: true},
+    name: {type: String, trim: true, required: true},
+    unitOfMeasure: {type: String, default: 'each', trim: true, required: true},
     revision: {type: String, default: 'NC', required: true}
 })
 

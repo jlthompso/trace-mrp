@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const InventoryLocationSchema = new Schema({
-    name: {type: String, required: true},
+    name: {type: String, trim: true, required: true},
     parts: [{type: Schema.Types.ObjectId, ref: 'PartInstance'}],
     warehouse: {type: Schema.Types.ObjectId, ref: 'Warehouse', required: true}
 })

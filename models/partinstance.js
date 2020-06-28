@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 
 const PartInstanceSchema = new Schema({
     part: {type: Schema.Types.ObjectId, ref: 'Part', required: true},
-    serialNumber: String,
-    lot: String,
+    serialNumber: {type: String, trim: true},
+    lot: {type: String, trim: true},
     scrap: {type: Boolean, default: false},
     history: {type: [String], default: [`${Date.now()}: Part created`]}
 })

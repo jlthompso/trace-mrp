@@ -17,6 +17,7 @@
                             <th scope="col">Name/Description</th>
                             <th scope="col">Revision</th>
                             <th scope="col">Unit of Measure</th>
+                            <th scope="col">Available QTY</th>
                         </thead>
                         <tbody>
                             <% part_list.forEach(part => { %>
@@ -25,6 +26,7 @@
                                     <td><%= part.name %></td>
                                     <td><%= part.revision %></td>
                                     <td><%= part.unitOfMeasure %></td>
+                                    <td>0</td>
                                 </tr>
                             <% }) %>
                         </tbody>

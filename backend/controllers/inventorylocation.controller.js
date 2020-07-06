@@ -1,4 +1,4 @@
-const InventoryLocation = require('../models/inventorylocation')
+const InventoryLocation = require('../models/inventorylocation.model')
 
 // Display list of all InventoryLocations
 exports.inventorylocation_list = function(req, res) {

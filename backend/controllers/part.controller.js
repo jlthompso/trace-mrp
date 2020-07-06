@@ -1,4 +1,4 @@
-const Part = require('../models/part')
+const Part = require('../models/part.model')
 
 // Display list of all Parts
 exports.part_list = function(req, res, next) {
@@ -6,7 +6,7 @@ exports.part_list = function(req, res, next) {
         .exec(function (err, list_parts) {
             if (err) return next(err)
             //Successful, so render
-            res.render('part_list', {title: 'traceMRP', part_list: list_parts, path: `/inventory${req.path}`})
+            res.json(list_parts)
     }) 
 }
 
@@ -17,18 +17,19 @@ exports.part_detail = function(req, res) {
 
 // Display Part create form on GET
 exports.part_create_get = function(req, res, next) {
-    res.render('part_form', {title: 'traceMRP', path: `/inventory${req.path}`})
+    //res.render('part_form', {title: 'traceMRP', path: `/inventory${req.path}`})
 }
 
 // Handle Part create on POST
 exports.part_create_post = function(req, res, next) {
-    console.log(req.body)
-    let part = new Part({
-        number: req.body.partNumber,
-        name: req.body.partName,
-        unitOfMeasure: req.body.unitOfMeasure,
-        revision: req.body.partRev
-    })
+    /*let part = new Part({
+        number: req.body.part_number,
+        name: req.body.part_name,
+        unitOfMeasure: req.body.part_unitOfMeasure,
+        revision: req.body.part_revision
+    })*/
+
+    let part = new Part(req.body)
 
     Part.findOne({'number': req.body.number})
         .exec(function(err, found_part) {

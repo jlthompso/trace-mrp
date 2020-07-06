@@ -1,4 +1,4 @@
-const PartInstance = require('../models/partinstance')
+const PartInstance = require('../models/partinstance.model')
 
 // Display list of all PartInstances
 exports.partinstance_list = function(req, res) {

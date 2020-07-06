@@ -1,4 +1,4 @@
-const Warehouse = require('../models/warehouse')
+const Warehouse = require('../models/warehouse.model')
 
 // Display list of all Warehouses
 exports.warehouse_list = function(req, res) {

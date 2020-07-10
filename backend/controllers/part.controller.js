@@ -11,8 +11,10 @@ exports.part_list = function(req, res, next) {
 }
 
 // Display detail page for a specific Part
-exports.part_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Part detail: ' + req.params.id)
+exports.part_detail = function(req, res, next) {
+    Part.findById(req.params.id, function (err, part) {
+        res.json(part)
+    })
 }
 
 // Display Part create form on GET
@@ -22,13 +24,6 @@ exports.part_create_get = function(req, res, next) {
 
 // Handle Part create on POST
 exports.part_create_post = function(req, res, next) {
-    /*let part = new Part({
-        number: req.body.part_number,
-        name: req.body.part_name,
-        unitOfMeasure: req.body.part_unitOfMeasure,
-        revision: req.body.part_revision
-    })*/
-
     let part = new Part(req.body)
 
     Part.findOne({'number': req.body.number})
@@ -37,12 +32,14 @@ exports.part_create_post = function(req, res, next) {
 
             if (found_part) {
                 // Part exists, redirect to its detail page
-                res.redirect(found_part.url)
+                //res.redirect(found_part.url)
+                res.json(found_part)
             } else {
                 part.save(function (err) {
                     if (err) return next(err)
                     // Part saved, redirect to its detail page
-                    res.redirect(part.url)
+                    //res.redirect(part.url)
+                    res.json(part)
                 })
             }
         })
@@ -60,10 +57,19 @@ exports.part_delete_post = function(req, res) {
 
 // Display Part update form on GET
 exports.part_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Part update GET')
+    Part.findById(req.params.id, function (err, part) {
+        res.json(part)
+    })
 }
 
 // Handle Part update on POST
-exports.part_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Part update POST')
+exports.part_update_post = function(req, res, next) {
+    let part = new Part(req.body)
+    part._id = req.params.id // This is required, or a new ID will be assigned!
+
+    Part.findByIdAndUpdate(req.params.id, part, {}, function (err, thepart) {
+        if (err) {return next(err)}
+           // Successful - redirect to book detail page.
+           res.json(part)
+    })
 }

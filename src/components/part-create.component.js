@@ -16,7 +16,7 @@ class PartCreate extends Component {
             part_number: '',
             part_name: '',
             part_revision: 'NC',
-            part_unitOfMeasure: 'each'
+            part_unitOfMeasure: 'each',
         }
     }
 
@@ -52,8 +52,8 @@ class PartCreate extends Component {
         this.setState({
             part_number: '',
             part_name: '',
-            part_revision: '',
-            part_unitOfMeasure: ''
+            part_revision: 'NC',
+            part_unitOfMeasure: 'each'
         })
     }
 

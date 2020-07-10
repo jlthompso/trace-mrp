@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
 import {Container, Navbar, Nav, Form, FormControl, Button, Row, Col} from 'react-bootstrap'
 import PartCreate from './components/part-create.component'
 import PartEdit from './components/part-edit.component'
@@ -57,8 +57,8 @@ class App extends Component {
   
             <Col>
               <Route path="/inventory/parts" exact component={PartList} />
-              <Route path="/inventory/parts/edit/:id" component={PartEdit} />
-              <Route path="/inventory/parts/create" component={PartCreate} />
+              <Route path="/inventory/parts/create" exact component={PartCreate} />
+              <Route path="/inventory/parts/:id/update" component={PartEdit} />
             </Col>
           </Row>
         </Container>

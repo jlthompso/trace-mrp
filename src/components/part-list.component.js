@@ -10,6 +10,9 @@ const Part = props => (
         <td>{props.part.revision}</td>
         <td>{props.part.unitOfMeasure}</td>
         <td>TBI</td>
+        <td>
+            <Link to={"parts/" + props.part._id + "/update"}>Edit</Link>
+        </td>
     </tr>
 )
 
@@ -45,6 +48,7 @@ class PartList extends Component {
                         <th>Revision</th>
                         <th>Unit of Measure</th>
                         <th>Available QTY</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
